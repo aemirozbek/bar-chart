@@ -1,0 +1,20 @@
+
+.bar:hover{
+    fill: green;
+}
+html, body {
+    /* Make sure the body takes the full height of the viewport */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    
+    /* Center the content horizontally and vertically */
+    justify-content: center;
+    align-items: center;
+    
+    /* Set the height of the div to be 100% of the viewport height */
+    height: 100%
+}
