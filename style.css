@@ -1,20 +1,22 @@
-
-.bar:hover{
-    fill: green;
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1fffb;
 }
-html, body {
-    /* Make sure the body takes the full height of the viewport */
-    height: 100%;
-    margin: 0;
-    padding: 0;
+#container {
+    width: 800px;
+    height: 517px;
+    box-shadow: 2px 2px 25px;
 }
-.container {
-    display: flex;
-    
-    /* Center the content horizontally and vertically */
-    justify-content: center;
-    align-items: center;
-    
-    /* Set the height of the div to be 100% of the viewport height */
-    height: 100%
+#title {
+  text-align: center;
+  font-size: 2.5em;
+  background-color: #f4fffc;
+  padding-top: 20px;
+}
+.bar:hover {
+  fill: rgb(144, 204, 144);
 }
