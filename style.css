@@ -18,5 +18,11 @@ body {
   padding-top: 20px;
 }
 .bar:hover {
-  fill: rgb(144, 204, 144);
+  fill: rgb(223, 245, 223);
 }
+#tooltip {
+    position: absolute;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #aaa;
+  }

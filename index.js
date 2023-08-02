@@ -30,6 +30,10 @@ fetch(url)
       .attr("height", h + 50)
       .style("background-color", "#f4fffc");
 
+    const tooltip = d3.select("#container")
+    .append("div")
+    .attr("id", "tooltip");
+
     const rects = svg
       .selectAll("rect")
       .data(dataset)
@@ -42,9 +46,7 @@ fetch(url)
       .attr("y", (d) => yScale(d[1]))
       .attr("width", w / dataset.length)
       .attr("height", (d) => yScale(0) - yScale(d[1]))
-      .attr("fill", "#33ffca")
-      .append("title")
-      .text((d) => d);
+      .attr("fill", "#33ffca");
 
     svg
       .append("g")
@@ -73,4 +75,30 @@ fetch(url)
       .attr("id", "source-link")
       .style("fill", "rgba(0, 0, 0, 0.74)")
       .style("font-size", "0.9em");
+
+      rects.on("mouseover", (event, d) => {
+        const gdpValue = d[1];
+        let formattedGDP = gdpValue;
+
+        if (gdpValue >= 1000) {
+          // Add the dot after the 3rd digit from the right
+          const gdpString = gdpValue.toString();
+          let lastNonFractional;
+          if(gdpString.includes(".")){
+            lastNonFractional = gdpString.search(/\./)
+          } else lastNonFractional = gdpString.length
+
+          formattedGDP = gdpString.slice(0, lastNonFractional - 3) + "," + gdpString.slice(lastNonFractional - 3);
+        }
+
+        tooltip.transition().duration(200).style("opacity", 1);
+        tooltip.html(`Date: ${d[0]}<br/>GDP: $${formattedGDP} Billion`)
+               .style("left", event.pageX + 15 + "px")
+               .style("top", event.pageY + "px")
+               .attr("data-date", d[0]);
+      })
+      
+      rects.on("mouseout", () => {
+        tooltip.transition().duration(200).style("opacity", 0);
+      });
   });
