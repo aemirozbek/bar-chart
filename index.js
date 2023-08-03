@@ -32,7 +32,8 @@ fetch(url)
 
     const tooltip = d3.select("#container")
     .append("div")
-    .attr("id", "tooltip");
+    .attr("id", "tooltip")
+    .style("opacity", 0);
 
     const rects = svg
       .selectAll("rect")
